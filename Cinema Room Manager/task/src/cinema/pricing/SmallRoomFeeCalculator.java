@@ -1,4 +1,6 @@
-package cinema;
+package cinema.pricing;
+
+import cinema.ScreenRoom;
 
 public class SmallRoomFeeCalculator implements SeatFeeCalculator {
     private static final int FEE = 10;

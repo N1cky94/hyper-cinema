@@ -1,5 +1,7 @@
 package cinema;
 
+import cinema.pricing.SeatFeeCalculator;
+
 public class ScreenRoom {
     private final int rows;
     private final int seatsPerRow;

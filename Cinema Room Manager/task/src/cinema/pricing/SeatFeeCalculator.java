@@ -1,4 +1,6 @@
-package cinema;
+package cinema.pricing;
+
+import cinema.ScreenRoom;
 
 public interface SeatFeeCalculator {
     int calculateMax();

@@ -1,11 +1,13 @@
-package cinema;
+package cinema.pricing;
+
+import cinema.ScreenRoom;
 
 public class LargeRoomFeeCalculator implements SeatFeeCalculator {
     private static final int FRONT_SEAT_FEE = 10;
     private static final int BACK_SEAT_FEE = 8;
     private final ScreenRoom room;
 
-    public LargeRoomFeeCalculator(ScreenRoom room) {
+    LargeRoomFeeCalculator(ScreenRoom room) {
         this.room = room;
     }
 
