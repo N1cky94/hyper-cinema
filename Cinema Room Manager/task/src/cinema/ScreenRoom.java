@@ -3,26 +3,35 @@ package cinema;
 import cinema.pricing.SeatFeeCalculator;
 
 public class ScreenRoom {
-    private final int rows;
-    private final int seatsPerRow;
+    private final SeatRow[] roomLayout;
     private final SeatFeeCalculator calculator;
 
     public ScreenRoom(int rows, int seatsPerRow) {
-        this.rows = rows;
-        this.seatsPerRow = seatsPerRow;
+        roomLayout = new SeatRow[rows];
+        for (int i = 0; i < rows; i++) {
+            roomLayout[i] = new SeatRow(seatsPerRow);
+        }
         this.calculator = SeatFeeCalculator.build(this);
     }
 
     public int getRows() {
-        return rows;
+        return roomLayout.length;
     }
 
     public int getSeatsPerRow() {
-        return seatsPerRow;
+        return roomLayout[0].seats();
     }
 
     public int seats() {
-        return rows * seatsPerRow;
+        return getRows() * getSeatsPerRow();
+    }
+
+    public void reserveSeat(int row, int seat) {
+        roomLayout[row - 1].reserveSeat(seat);
+    }
+
+    public int getPriceForSeat(int row, int seat) {
+        return this.calculator.seatPrice(row, seat);
     }
 
     public int calculateMaxTurnover() {
@@ -33,9 +42,15 @@ public class ScreenRoom {
     public String toString() {
         StringBuilder builder = new StringBuilder("Screen:\n");
 
-        builder.append("  1 2 3 4 5 6 7 8\n");
-        for (int i = 1; i < 8; i++) {
-            builder.append("%d S S S S S S S S%n".formatted(i));
+        builder.append(" ");
+        for (int i = 1; i <= getSeatsPerRow(); i++) {
+            builder.append(" ");
+            builder.append(i);
+        }
+        builder.append("\n");
+
+        for (int i = 1; i <= getRows(); i++) {
+            builder.append("%d%s%n".formatted(i, roomLayout[i - 1]));
         }
 
         return builder.toString();
