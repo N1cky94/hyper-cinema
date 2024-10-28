@@ -10,6 +10,6 @@ public class SmallRoomFeeCalculator implements SeatFeeCalculator {
 
     @Override
     public int calculateMax() {
-        return room.getRows() * FEE;
+        return room.seats() * FEE;
     }
 }
