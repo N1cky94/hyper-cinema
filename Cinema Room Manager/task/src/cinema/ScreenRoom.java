@@ -40,7 +40,7 @@ public class ScreenRoom {
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder("Screen:\n");
+        StringBuilder builder = new StringBuilder("Cinema:\n");
 
         builder.append(" ");
         for (int i = 1; i <= getSeatsPerRow(); i++) {
