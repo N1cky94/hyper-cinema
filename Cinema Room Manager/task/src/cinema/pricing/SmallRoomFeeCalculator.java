@@ -14,4 +14,9 @@ public class SmallRoomFeeCalculator implements SeatFeeCalculator {
     public int calculateMax() {
         return room.seats() * FEE;
     }
+
+    @Override
+    public int seatPrice(int row, int seat) {
+        return FEE;
+    }
 }

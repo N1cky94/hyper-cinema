@@ -29,4 +29,17 @@ public class LargeRoomFeeCalculator implements SeatFeeCalculator {
 
         return front * FRONT_SEAT_FEE + back * BACK_SEAT_FEE;
     }
+
+    @Override
+    public int seatPrice(int row, int seat) {
+        int front;
+
+        if (room.getRows() % 2 == 0) {
+            front = room.getRows() / 2;
+        } else {
+            front = (room.getRows() - 1) / 2;
+        }
+
+        return row <= front ? FRONT_SEAT_FEE : BACK_SEAT_FEE;
+    }
 }

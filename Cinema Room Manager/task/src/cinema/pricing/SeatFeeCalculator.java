@@ -4,6 +4,7 @@ import cinema.ScreenRoom;
 
 public interface SeatFeeCalculator {
     int calculateMax();
+    int seatPrice(int row, int seat);
 
     static SeatFeeCalculator build(ScreenRoom room) {
         if (room.seats() <= 60) {
