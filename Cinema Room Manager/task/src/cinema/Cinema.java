@@ -15,18 +15,39 @@ public class Cinema {
         room = new ScreenRoom(rows, seatsPerRow);
         manager = new SeatManager(room);
 
-        printRoom();
-        selectSeatMenu();
-        printRoom();
+        boolean keepGoing = true;
+
+        while(keepGoing) {
+            keepGoing = run();
+        }
+    }
+
+    public static boolean run() {
+        int menuChoice = mainMenu();
+
+        switch (menuChoice) {
+            case 1 -> printRoom();
+            case 2 -> selectSeatMenu();
+        }
+
+        return menuChoice != 0;
+    }
+
+    private static int mainMenu() {
+        return Keyboard.getNumber("""
+                
+                1. Show the seats
+                2. Buy a ticket
+                0. Exit""");
     }
 
     private static void printRoom() {
         System.out.println();
         System.out.println(room);
-        System.out.println();
     }
 
     public static void selectSeatMenu() {
+        System.out.println();
         int row = Keyboard.getNumber("Enter a row number:");
         int seat = Keyboard.getNumber("Enter a seat number in that row:");
 
