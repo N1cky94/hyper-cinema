@@ -11,4 +11,8 @@ public class SeatManager {
         room.reserveSeat(row, seat);
         return room.getPriceForSeat(row, seat);
     }
+
+    public int getTurnOver() {
+        return 0;
+    }
 }

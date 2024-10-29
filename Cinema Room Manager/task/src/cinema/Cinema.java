@@ -58,18 +58,19 @@ public class Cinema {
     }
 
     public static void statisticsMenu() {
+        RoomStatistics stats = room.getStatistics();
         System.out.printf(
                 """
                                 
                 Number of purchased tickets: %d
-                Percentage: %3.2f
+                Percentage: %3.2f%%
                 Current income: $%d
                 Total income: $%d
                 """,
-                0,
-                0.0,
-                0,
-                360
+                stats.purchasedTickets(),
+                stats.purchasedTicketsPercentage(),
+                stats.income(),
+                stats.prospectedIncome()
         );
     }
 }

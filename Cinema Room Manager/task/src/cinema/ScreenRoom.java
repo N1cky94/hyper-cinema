@@ -38,6 +38,34 @@ public class ScreenRoom {
         return this.calculator.calculateMax();
     }
 
+    public int getReservedSeats() {
+        int reservedSeats = 0;
+
+        for (SeatRow row : roomLayout) {
+            reservedSeats += row.getReservedSeats();
+        }
+
+        return reservedSeats;
+    }
+
+    public int getIncome() {
+        int income = 0;
+
+        for (int i = 0; i < roomLayout.length; i++) {
+            income += roomLayout[i].getReservedSeats() * calculator.seatPrice(i, 1);
+        }
+        return income;
+    }
+
+    public RoomStatistics getStatistics() {
+        return new RoomStatistics(
+                this.getReservedSeats(),
+                this.seats(),
+                this.getIncome(),
+                this.calculateMaxTurnover()
+        );
+    }
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder("Cinema:\n");

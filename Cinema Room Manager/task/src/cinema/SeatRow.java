@@ -22,6 +22,17 @@ public class SeatRow {
         row[seat - 1] = 'B';
     }
 
+    public int getReservedSeats() {
+        int sum = 0;
+        for (char seat : row) {
+            if (seat == 'B') {
+                sum++;
+            }
+        }
+
+        return sum;
+    }
+
     private void fillWithAvailableSeats() {
         for (int i = 0; i < seats(); i++) {
             row[i] = 'S';
