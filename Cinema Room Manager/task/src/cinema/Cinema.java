@@ -2,8 +2,6 @@ package cinema;
 
 import cinema.utils.Keyboard;
 
-import java.util.Scanner;
-
 public class Cinema {
     private static ScreenRoom room;
     private static SeatManager manager;
@@ -28,6 +26,7 @@ public class Cinema {
         switch (menuChoice) {
             case 1 -> printRoom();
             case 2 -> selectSeatMenu();
+            case 3 -> statisticsMenu();
         }
 
         return menuChoice != 0;
@@ -38,6 +37,7 @@ public class Cinema {
                 
                 1. Show the seats
                 2. Buy a ticket
+                3. Statistics
                 0. Exit""");
     }
 
@@ -54,6 +54,22 @@ public class Cinema {
         System.out.printf(
                 "\nTicket price: $%d%n",
                 manager.bookSeat(row, seat)
+        );
+    }
+
+    public static void statisticsMenu() {
+        System.out.printf(
+                """
+                                
+                Number of purchased tickets: %d
+                Percentage: %3.2f
+                Current income: $%d
+                Total income: $%d
+                """,
+                0,
+                0.0,
+                0,
+                360
         );
     }
 }
