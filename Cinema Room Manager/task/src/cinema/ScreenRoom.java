@@ -27,7 +27,16 @@ public class ScreenRoom {
     }
 
     public void reserveSeat(int row, int seat) {
+        if (outOfRoomBounds(row, seat)) {
+            throw new RuntimeException("Wrong input!");
+        }
+
         roomLayout[row - 1].reserveSeat(seat);
+    }
+
+    private boolean outOfRoomBounds(int row, int seat) {
+        return row > this.getRows() || row <= 0 || seat > this.getSeatsPerRow() || seat <= 0;
+
     }
 
     public int getPriceForSeat(int row, int seat) {
@@ -52,7 +61,7 @@ public class ScreenRoom {
         int income = 0;
 
         for (int i = 0; i < roomLayout.length; i++) {
-            income += roomLayout[i].getReservedSeats() * calculator.seatPrice(i, 1);
+            income += roomLayout[i].getReservedSeats() * calculator.seatPrice(i + 1, 1);
         }
         return income;
     }

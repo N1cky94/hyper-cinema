@@ -47,14 +47,23 @@ public class Cinema {
     }
 
     public static void selectSeatMenu() {
-        System.out.println();
-        int row = Keyboard.getNumber("Enter a row number:");
-        int seat = Keyboard.getNumber("Enter a seat number in that row:");
+        boolean kg = true;
 
-        System.out.printf(
-                "\nTicket price: $%d%n",
-                manager.bookSeat(row, seat)
-        );
+        while(kg) {
+            try {
+                System.out.println();
+                int row = Keyboard.getNumber("Enter a row number:");
+                int seat = Keyboard.getNumber("Enter a seat number in that row:");
+
+                System.out.printf(
+                        "\nTicket price: $%d%n",
+                        manager.bookSeat(row, seat)
+                );
+                kg = false;
+            } catch (RuntimeException re) {
+                System.out.println(re.getMessage());
+            }
+        }
     }
 
     public static void statisticsMenu() {

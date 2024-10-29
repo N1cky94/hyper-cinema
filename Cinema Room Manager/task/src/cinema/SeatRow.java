@@ -19,6 +19,10 @@ public class SeatRow {
     }
 
     public void reserveSeat(int seat) {
+        if (!isAvailable(seat)) {
+            throw new RuntimeException("That ticket has already been purchased!");
+        }
+
         row[seat - 1] = 'B';
     }
 
